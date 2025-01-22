@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental State Predictor</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Mental State Predictor</h2>
+        <ul>
+            <li><a href="#" id="checkMentalStatus">Check Mental Status</a></li>
+            <li><a href="#" id="previousPredictions">Previous Predictions</a></li>
+            <li><a href="#" id="dashboard">Dashboard</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <!-- Prediction Section -->
+        <div id="predictionSection">
+            <h1>Predict Mental State</h1>
+            <form id="predictionForm">
+                <label for="inputText">Enter a statement:</label>
+                <textarea id="inputText" name="text" rows="4" required></textarea><br><br>
+                <button type="submit">Predict Mental State</button>
+            </form>
+            <div id="result"></div>
+        </div>
+
+        <!-- Previous Predictions Section -->
+        <div id="previousPredictionsSection" style="display: none;">
+            <h1>Previous Predictions</h1>
+            <table id="predictionsTable" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Input Text</th>
+                        <th>Predicted State</th>
+                    </tr>
+                </thead>
+                <tbody id="predictionsList">
+                    <!-- Dynamically populated rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+        
+
+        <!-- Dashboard Section -->
+        <div id="dashboardSection">
+            <h1>Prediction Dashboard</h1>
+            <canvas id="predictionChart"></canvas>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+    <!-- <script>
+    // Fetch data from the API
+    fetch('http://127.0.0.1:8000/dashboard/')
+      .then(response => response.json()) // Parse the JSON data
+      .then(data => {
+        // Extract labels and values from the fetched data
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+
+        // Create the bar chart using Chart.js
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels, // X-axis labels
+            datasets: [{
+              label: 'Condition Count',
+              data: values, // Y-axis values
+              backgroundColor: 'rgba(75, 192, 192, 0.2)', // Bar color
+              borderColor: 'rgba(75, 192, 192, 1)', // Bar border color
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error)); // Handle any errors
+  </script> -->
+</body>
+</html>
